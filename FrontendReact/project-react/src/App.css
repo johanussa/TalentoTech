@@ -1,8 +1,16 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+#carouselExample {
+  margin: 0 auto;
+  width: 500px;
+}
+#input {
+  width: 380px;
+  margin: auto;
 }
 
 .logo {
@@ -16,6 +24,15 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+#inputT {
+  text-align: center;
+  width: 220px;
+  margin-left: 5px;
+  padding: 5px 4px;
+  border-radius: 10px;
+  border-style: groove;
 }
 
 @keyframes logo-spin {
