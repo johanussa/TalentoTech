@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainWelcomebackground {
+    width: 100%;
+    height: 100vh;
+    background-color: hsla(0, 0%, 0%, 0.5);
+}
+
+.welcomeContent {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+    display: grid;
+    grid-template-rows: 3fr 8fr 1fr 3fr;
+    /* transition: all 2s ease-in-out; */
+}
+
+.logoWelcome {
+    width: 90px;
+    vertical-align: middle;
+    margin: 20px;
+}
+
+.divMain {
+    max-width: 850px;
+    font-size: 1.5rem;
+    text-align: center;
+    justify-self: center;
+}
+
+.divMain h1 {
+    margin-bottom: 50px;
+}
