@@ -25,7 +25,6 @@ const Welcome = () => {
           ordenada y sencilla, organizar, ver, editar y administrar el horario
           de las personas registradas."
           />
-          <br />
           <ParagraphTag
             message="Esta aplicación va dirigida a todas aquellas empresas que quieran, de
           manera automatizada y moderna, realizar la gestión de los horarios del
