@@ -1,41 +1,20 @@
-import styles from "./Login.module.css";
-import logoMidgard from "../../assets/yggdrasilBlack.png";
+import { ComponentIdDocument, ComponentIdNumber, ErrorUserInfo } from "./LoginComponents";
+import { ButtonComponent, ParagraphTag } from "../../utils/ComponentsTag";
 import logoMidgardFull from "../../assets/logoMidgardFullBlack.png";
-import {
-  ButtonComponent,
-  ImgAndSpanTag,
-  ParagraphTag,
-  TagAnchor,
-} from "../../utils/ComponentsTag";
+import LoginModalRec from "./LoginModalRec";
+import styles from "./Login.module.css";
+import { useState } from "react";
+import LoginRegister from "./LoginRegister";
 
 const Login = () => {
+  const [isActiveModal, setIsActiveModal] = useState(false);
+
+  const handlerActiveModal = () => setIsActiveModal(!isActiveModal);
+
   return (
     <main className={styles.loginContent}>
-      <section className={styles.register}>
-        <aside>
-          <ImgAndSpanTag
-            styleImg={styles.logoMidgard}
-            source={logoMidgard}
-            alt="MIDGARD CODERS"
-          />
-        </aside>
-        <aside>
-          <h2>¿ No tienes una cuenta ?</h2>
-          <ParagraphTag
-            message="Registrate para poder acceder a todos nuestros servicios, y administra y
-                visualiza los horarios en un solo lugar."
-          />
-          <div className={styles.divBtn}>
-            <ButtonComponent name="Registrarse" />
-          </div>
-          <div className={styles.socialMedia}>
-            <TagAnchor link="https://web.facebook.com" icon="bi bi-facebook" />
-            <TagAnchor link="https://www.instagram.com" icon="bi bi-instagram" />
-            <TagAnchor link="https://twitter.com" icon="bi bi-twitter" />
-            <TagAnchor link="https://co.linkedin.com" icon="bi bi-linkedin" />
-          </div>
-        </aside>
-      </section>
+      <LoginRegister />
+
       <section className={styles.loginForm}>
         <aside>
           <img
@@ -43,84 +22,49 @@ const Login = () => {
             alt="Midgard - Coders"
             className={styles.logoLogin}
           />
-          <h2>Inicio de Sesion</h2>
+          <h2>Inicio de Sesión</h2>
         </aside>
         <form className={styles.formulario}>
           <section>
-            <label htmlFor="tipo" className={styles.form_label_login}>
-              Tipo de Documento
-            </label>
-            <div className={styles.form_input}>
-              <i className={["bi bi-person-vcard-fill", styles.iconsLogin].join(" ")} ></i>
-              <select name="tipo" defaultValue={"CC"} required>
-                <option value="CEDULA_DE_CIUDADANIA">
-                  Cédula de Ciudadania
-                </option>
-                <option value="TARJETA_DE_IDENTIDAD">
-                  Tarjeta de Identidad
-                </option>
-                <option value="CEDULA_DE_EXTRANJERIA">
-                  Cédula de Extranjeria
-                </option>
-                <option value="PEP">PEP</option>
-                <option value="PERMISO_DE_PROTECCION_TEMPORAL">
-                  Permiso Protección Temporal
-                </option>
-              </select>
-            </div>
+            <ComponentIdDocument idTag="tipoDoc" />
           </section>
 
           <section>
-            <label htmlFor="numDoc" className={styles.form_label_login}>
-              Número de Documento
-            </label>
-            <div className={styles.form_input}>
-              <i className={["bi bi-person-vcard-fill", styles.iconsLogin].join(" ")} ></i>
-              <input
-                type="text"
-                id="numDoc"
-                placeholder="Ingrese El Número de Documento"
-                required
-              />
-            </div>
-            <ParagraphTag styleP={styles.message_error}
-              message="El Número No puede contener espacios ni caracteres especiales y debe 
-                  contener minimo 8 caracteres" />
+            <ComponentIdNumber idTag="numDoc" />
           </section>
 
           <section>
             <label htmlFor="pass" className={styles.form_label_login}>Contraseña</label>
             <div className={styles.form_input}>
-              <i className={["bi bi-lock-fill", styles.iconsLogin].join(" ")}></i>
+              <i className={`bi bi-lock-fill ${styles.iconsLogin}`}></i>
               <input
                 type="password"
                 id="pass"
-                placeholder="Ingrese la Contraseña"
+                placeholder="Ingrese la contraseña"
                 required
               />
-              <i className={["bi bi-eye-fill", styles.iconEye].join(" ")}></i>
+              <i className={`bi bi-eye-fill ${styles.iconEye}`}></i>
             </div>
             <ParagraphTag styleP={styles.message_error}
               message="La Contraseña debe tener mínimo 8 caracteres" />
           </section>
 
-          <section className={[styles.message_error, styles.form_error].join(' ')}>
-            <p>
-              <i className={["bi bi-exclamation-diamond-fill", styles.iconsLogin].join(' ')}></i>
-              <b>Error: </b> Información de Usuario No Válida.
-            </p>
-          </section>
+          <ErrorUserInfo />
 
           <section className={styles.forget_pass}>
-            <button type='button'>
+            <button type='button' onClick={handlerActiveModal}>
               <i className="bi bi-key-fill"></i> Olvidé mi Contraseña
             </button>
           </section>
 
           <section>
-            <ButtonComponent name="Iniciar Sesion" typeBtn="submit" />
+            <ButtonComponent name="Iniciar Sesión" typeBtn="submit" handlerClick={() => { }} />
           </section>
         </form>
+      </section>
+
+      <section className={`${styles.modal} ${isActiveModal && styles.modal_show}`}>
+        <LoginModalRec handlerActiveModal={handlerActiveModal} />
       </section>
     </main>
   );

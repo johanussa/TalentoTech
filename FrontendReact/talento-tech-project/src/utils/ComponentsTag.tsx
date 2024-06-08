@@ -1,12 +1,13 @@
 import { useState } from "react";
-import styles from "./Components.module.css";
+import styles from "./ComponentsTag.module.css";
 
 type PropsButton = {
   name: string;
   typeBtn?: "submit" | "reset" | "button";
+  handlerClick: () => void;
 };
 
-export const ButtonComponent = ({ name, typeBtn }: PropsButton) => {
+export const ButtonComponent = ({ name, typeBtn, handlerClick }: PropsButton) => {
   const [isLoading, setIsLoading] = useState(false);
 
   if (isLoading) {
@@ -19,10 +20,10 @@ export const ButtonComponent = ({ name, typeBtn }: PropsButton) => {
     <button
       type={typeBtn}
       className={styles.btnWelcome}
-      onClick={() => setIsLoading(!isLoading)}
+      onClick={handlerClick}
       disabled={isLoading}
     >
-      {isLoading ? ("") : (<i className={["bi bi-caret-right-fill", styles.icon].join(" ")}></i>)}
+      {isLoading ? ("") : (<i className={`bi bi-caret-right-fill ${styles.icon}`}></i>)}
       {isLoading ? "Cargando..." : name}
     </button>
   );

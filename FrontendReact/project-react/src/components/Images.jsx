@@ -26,7 +26,7 @@ const Images = () => {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={changeImg} className="d-block w-100" alt="React" />
+            <img src={changeImg} className="d-block w-100" alt="Programming Tools" />
           </div>
         </div>
       </div>

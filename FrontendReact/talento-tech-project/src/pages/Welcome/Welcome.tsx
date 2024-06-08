@@ -31,7 +31,7 @@ const Welcome = () => {
           personal que tienen a su cargo."
           />
         </div>
-        <ButtonComponent name={"INGRESAR"} />
+        <ButtonComponent name={"INGRESAR"} handlerClick={() => {}}/>
       </section>
     </main>
   );
